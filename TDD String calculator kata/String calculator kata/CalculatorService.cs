@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 
 namespace TDD_String_calculator_kata.String_calculator_kata
