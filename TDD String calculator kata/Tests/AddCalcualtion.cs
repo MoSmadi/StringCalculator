@@ -15,4 +15,15 @@ public class CalculatorTest
 
         result.Should().Be(0);
     }
+    
+    
+    [Fact]
+    public void AddNContainOneNumberShould()
+    {
+        var calculator = new Calculator();
+
+        var result = calculator.Add("1");
+
+        result.Should().Be(1);
+    }
 }
