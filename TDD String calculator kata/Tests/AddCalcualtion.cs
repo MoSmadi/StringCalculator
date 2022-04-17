@@ -1,4 +1,5 @@
 using FluentAssertions;
+using TDD_String_calculator_kata.String_calculator_kata;
 using Xunit;
 
 namespace TDD_String_calculator_kata;

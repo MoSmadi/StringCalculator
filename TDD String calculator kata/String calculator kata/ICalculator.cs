@@ -1,6 +1,7 @@
-namespace TDD_String_calculator_kata;
-
-public interface ICalculator
+namespace TDD_String_calculator_kata.String_calculator_kata
 {
-    public int Add(string numbers);
+    public interface ICalculator
+    {
+        public int Add(string numbers);
+    }
 }
