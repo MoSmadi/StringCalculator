@@ -7,10 +7,12 @@ namespace TDD_String_calculator_kata.String_calculator_kata
             if (numbers.Equals(""))
                 return 0;
 
-            else
+            if (numbers.Length == 1)
             {
-                throw new System.NotImplementedException();
+                return int.Parse(numbers);
             }
+
+            throw new System.NotImplementedException();
         }
     }
 }
