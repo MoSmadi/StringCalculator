@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace TDD_String_calculator_kata.String_calculator_kata
 {
     public class Calculator : ICalculator
@@ -12,7 +15,10 @@ namespace TDD_String_calculator_kata.String_calculator_kata
                 return int.Parse(numbers);
             }
 
-            throw new System.NotImplementedException();
+            var stringNumberList = numbers.Split(',').ToList();
+
+            //use LINQ instead of normal sum with for loop
+            return stringNumberList.Sum(int.Parse);
         }
     }
 }
