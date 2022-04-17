@@ -16,7 +16,6 @@ public class CalculatorTest
         result.Should().Be(0);
     }
     
-    
     [Fact]
     public void AddNContainOneNumberShould()
     {
@@ -25,5 +24,15 @@ public class CalculatorTest
         var result = calculator.Add("1");
 
         result.Should().Be(1);
+    }
+    
+    [Fact]
+    public void AddTowNumbersShould()
+    {
+        var calculator = new Calculator();
+
+        var result = calculator.Add("1,2");
+
+        result.Should().Be(3);
     }
 }
