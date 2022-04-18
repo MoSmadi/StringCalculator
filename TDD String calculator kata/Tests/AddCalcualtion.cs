@@ -82,10 +82,9 @@ namespace TDD_String_calculator_kata.Tests
         {
             var calculator = new Calculator();
 
-            Action answer = () => calculator.Add("1,4,-1");
+            Action answer = () => calculator.Add("1,4,-1,-2,-45");
 
-            answer.Should().Throw<InvalidOperationException>()
-                .WithMessage("whatever");
+            answer.Should().Throw<InvalidOperationException>().WithMessage("negatives not allowed: -1,-2,-45");
         }
     }
 }
