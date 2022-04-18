@@ -35,5 +35,15 @@ namespace TDD_String_calculator_kata.Tests
 
             result.Should().Be(3);
         }
+
+        [Fact]
+        public void AddUnknownAmountOfNumbersShould()
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Add("1,2,3,4,5,6");
+
+            result.Should().Be(21);
+        }
     }
 }
