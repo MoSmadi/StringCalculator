@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 namespace TDD_String_calculator_kata.String_calculator_kata
@@ -14,10 +15,35 @@ namespace TDD_String_calculator_kata.String_calculator_kata
                 return int.Parse(numbers);
             }
 
-            var stringNumberList = numbers.Split(',').ToList();
+            if (numbers.Contains('\n'))
+            {
+                
+                if (CheckTheFinalCharacter(numbers))
+                    return int.MinValue;
+                
+                var stringNumberList = numbers.Split(',','\n').ToList();
 
-            //use LINQ instead of normal sum with for loop
-            return stringNumberList.Sum(int.Parse);
+                return stringNumberList.Sum(int.Parse);
+            }
+
+            else
+            {
+                var stringNumberList = numbers.Split(',').ToList();
+                
+                //use LINQ instead of normal sum with for loop
+                return stringNumberList.Sum(int.Parse);
+            }
+            
+        }
+
+        public bool CheckTheFinalCharacter(string numbers)
+        {
+            if (!numbers.EndsWith('\n')) 
+                return numbers.EndsWith(',');
+            
+            numbers = numbers.TrimEnd();
+
+            return numbers.EndsWith(',');
         }
     }
 }
