@@ -47,12 +47,22 @@ public class CalculatorTest
     }
     
     [Fact]
-        public void AddNewLineBetweenNumbersShould()
-        {
-            var calculator = new Calculator();
+    public void AddNewLineBetweenNumbersShould()
+    {
+        var calculator = new Calculator();
     
-            var result = calculator.Add("1\n2,3");
+        var result = calculator.Add("1\n2,3");
     
-            result.Should().Be(6);
-        }
+        result.Should().Be(6);
+    }
+    
+    [Fact]
+    public void AddNewLineBetweenNumbersWithInvalidSyntaxShould()
+    {
+        var calculator = new Calculator();
+    
+        var result = calculator.Add("1,\n");
+    
+        result.Should().Be(6);
+    }
 }
