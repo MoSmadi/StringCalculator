@@ -47,7 +47,7 @@ namespace TDD_String_calculator_kata.String_calculator_kata
             
         }
 
-        private static bool CheckTheFinalCharacter(string numbers, char delimiter)
+        public bool CheckTheFinalCharacter(string numbers, char delimiter)
         {
             if (!numbers.EndsWith('\n')) 
                 return numbers.EndsWith(delimiter);
