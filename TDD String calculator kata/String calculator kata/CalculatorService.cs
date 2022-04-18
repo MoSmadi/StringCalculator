@@ -58,7 +58,7 @@ namespace TDD_String_calculator_kata.String_calculator_kata
             throw new InvalidOperationException("negatives not allowed: " + string.Join(",",negativeNumbers));
         }
 
-        private static IEnumerable<string> ConvertStringToListOfInteger(string numbers, char delimiter, out List<int> listNumbers)
+        public IEnumerable<string> ConvertStringToListOfInteger(string numbers, char delimiter, out List<int> listNumbers)
         {
             var stringNumberList = numbers.Split(delimiter).ToList();
             stringNumberList.Remove("");
@@ -77,12 +77,12 @@ namespace TDD_String_calculator_kata.String_calculator_kata
             return numbers.EndsWith(delimiter);
         }
 
-        private static bool CheckIfContainsNegativeNumbers(IEnumerable<int> numbers)
+        public bool CheckIfContainsNegativeNumbers(IEnumerable<int> numbers)
         {
             return numbers.Any(i => i < 0);
         }
         
-        private static IEnumerable<int> GetNegativeNumbers(IEnumerable<int> numbers)
+        public IEnumerable<int> GetNegativeNumbers(IEnumerable<int> numbers)
         {
             return numbers.Where(i => i < 0);
         }
