@@ -65,4 +65,14 @@ public class CalculatorTest
     
         result.Should().Be(int.MinValue);
     }
+    
+    [Fact]
+    public void AddWithSupportingDifferentDelimitersShould()
+    {
+        var calculator = new Calculator();
+    
+        var result = calculator.Add("//;\n1;2;3;4;5;6");
+    
+        result.Should().Be(21);
+    }
 }
