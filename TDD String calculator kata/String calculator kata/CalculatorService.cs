@@ -36,7 +36,7 @@ namespace TDD_String_calculator_kata.String_calculator_kata
             
         }
 
-        private static bool CheckTheFinalCharacter(string numbers)
+        public bool CheckTheFinalCharacter(string numbers)
         {
             if (!numbers.EndsWith('\n')) 
                 return numbers.EndsWith(',');
