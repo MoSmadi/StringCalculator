@@ -7,8 +7,18 @@ namespace TDD_String_calculator_kata.String_calculator_kata
     {
         public int Add(string numbers)
         {
+            var delimiter = ',';
+            
+            if (numbers.StartsWith("//"))
+            {
+                delimiter = numbers.ElementAt(2);
+                numbers = numbers[3..];
+            }
+
             if (numbers.Equals(""))
+            {
                 return 0;
+            }
 
             if (numbers.Length == 1)
             {
@@ -17,18 +27,19 @@ namespace TDD_String_calculator_kata.String_calculator_kata
 
             if (numbers.Contains('\n'))
             {
-                
-                if (CheckTheFinalCharacter(numbers))
+                if (CheckTheFinalCharacter(numbers,delimiter))
                     return int.MinValue;
                 
-                var stringNumberList = numbers.Split(',','\n').ToList();
-
+                var stringNumberList = numbers.Split(delimiter,'\n').ToList();
+                stringNumberList.Remove("");
+                
                 return stringNumberList.Sum(int.Parse);
             }
 
             else
             {
-                var stringNumberList = numbers.Split(',').ToList();
+                var stringNumberList = numbers.Split(delimiter).ToList();
+                stringNumberList.Remove("");
                 
                 //use LINQ instead of normal sum with for loop
                 return stringNumberList.Sum(int.Parse);
@@ -36,14 +47,14 @@ namespace TDD_String_calculator_kata.String_calculator_kata
             
         }
 
-        public bool CheckTheFinalCharacter(string numbers)
+        public bool CheckTheFinalCharacter(string numbers, char delimiter)
         {
             if (!numbers.EndsWith('\n')) 
-                return numbers.EndsWith(',');
+                return numbers.EndsWith(delimiter);
             
             numbers = numbers.TrimEnd();
 
-            return numbers.EndsWith(',');
+            return numbers.EndsWith(delimiter);
         }
     }
 }
