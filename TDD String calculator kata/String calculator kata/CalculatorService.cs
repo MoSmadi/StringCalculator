@@ -41,8 +41,7 @@ namespace TDD_String_calculator_kata.String_calculator_kata
             throw new InvalidOperationException("negatives not allowed: " + string.Join(",",negativeNumbers));
         }
 
-  
-        private static int ContainsNewLine(string numbers, char delimiter)
+        public int ContainsNewLine(string numbers, char delimiter)
         {
             if (CheckTheFinalCharacter(numbers, delimiter))
                 return int.MinValue;
@@ -68,7 +67,7 @@ namespace TDD_String_calculator_kata.String_calculator_kata
             return stringNumberList;
         }
         
-        private static bool CheckTheFinalCharacter(string numbers, char delimiter)
+        public bool CheckTheFinalCharacter(string numbers, char delimiter)
         {
             if (!numbers.EndsWith('\n')) 
                 return numbers.EndsWith(delimiter);
