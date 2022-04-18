@@ -5,77 +5,77 @@ using Xunit;
 
 namespace TDD_String_calculator_kata.Tests
 {
-public class CalculatorTest
-{
-    [Fact]
-    public void AddEmptyStringShould()
+    public class CalculatorTest
     {
-        var calculator = new Calculator();
+        [Fact]
+        public void AddEmptyStringShould()
+        {
+            var calculator = new Calculator();
 
-        var result = calculator.Add("");
+            var result = calculator.Add("");
 
-        result.Should().Be(0);
-    }
-    
-    [Fact]
-    public void AddContainOneNumberShould()
-    {
-        var calculator = new Calculator();
+            result.Should().Be(0);
+        }
 
-        var result = calculator.Add("1");
+        [Fact]
+        public void AddContainOneNumberShould()
+        {
+            var calculator = new Calculator();
 
-        result.Should().Be(1);
-    }
-    
-    [Fact]
-    public void AddTowNumbersShould()
-    {
-        var calculator = new Calculator();
+            var result = calculator.Add("1");
 
-        var result = calculator.Add("1,2");
+            result.Should().Be(1);
+        }
 
-        result.Should().Be(3);
-    }
-    
-    [Fact]
-    public void AddUnknownAmountOfNumbersShould()
-    {
-        var calculator = new Calculator();
+        [Fact]
+        public void AddTowNumbersShould()
+        {
+            var calculator = new Calculator();
 
-        var result = calculator.Add("1,2,3,4,5,6");
+            var result = calculator.Add("1,2");
 
-        result.Should().Be(21);
-    }
-    
-    [Fact]
-    public void AddNewLineBetweenNumbersShould()
-    {
-        var calculator = new Calculator();
-    
-        var result = calculator.Add("1\n2,3");
-    
-        result.Should().Be(6);
-    }
-    
-    [Fact]
-    public void AddNewLineBetweenNumbersWithInvalidSyntaxShould()
-    {
-        var calculator = new Calculator();
-    
-        var result = calculator.Add("1,\n");
-    
-        result.Should().Be(int.MinValue);
-    }
-    
-    [Fact]
-    public void AddWithSupportingDifferentDelimitersShould()
-    {
-        var calculator = new Calculator();
-    
-        var result = calculator.Add("//;\n1;2;3;4;5;6");
-    
-        result.Should().Be(21);
-    }
+            result.Should().Be(3);
+        }
+
+        [Fact]
+        public void AddUnknownAmountOfNumbersShould()
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Add("1,2,3,4,5,6");
+
+            result.Should().Be(21);
+        }
+
+        [Fact]
+        public void AddNewLineBetweenNumbersShould()
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Add("1\n2,3");
+
+            result.Should().Be(6);
+        }
+
+        [Fact]
+        public void AddNewLineBetweenNumbersWithInvalidSyntaxShould()
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Add("1,\n");
+
+            result.Should().Be(int.MinValue);
+        }
+
+        [Fact]
+        public void AddWithSupportingDifferentDelimitersShould()
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Add("//;\n1;2;3;4;5;6");
+
+            result.Should().Be(21);
+        }
 
         [Fact]
         public void AddNegativeNumbersShould()
@@ -85,6 +85,16 @@ public class CalculatorTest
             Action answer = () => calculator.Add("1,4,-1,-2,-45");
 
             answer.Should().Throw<InvalidOperationException>().WithMessage("negatives not allowed: -1,-2,-45");
+        }
+
+        [Fact]
+        public void IfTheAnswerIsBigNumberShould()
+        {
+            var calculator = new Calculator();
+
+            var result = calculator.Add("//$\n2$1001");
+
+            result.Should().Be(2);
         }
     }
 }

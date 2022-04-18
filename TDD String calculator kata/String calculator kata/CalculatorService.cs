@@ -32,13 +32,9 @@ namespace TDD_String_calculator_kata.String_calculator_kata
             }
 
             
-            var stringNumberList = ConvertStringToListOfInteger(numbers, delimiter, out var listNumbers);
-
-            if (!CheckIfContainsNegativeNumbers(listNumbers))
-                return stringNumberList.Sum(int.Parse); //use LINQ instead of normal sum with for loop
+            ConvertStringToListOfInteger(numbers, delimiter, out var listNumbers);
             
-            var negativeNumbers = GetNegativeNumbers(listNumbers);
-            throw new InvalidOperationException("negatives not allowed: " + string.Join(",",negativeNumbers));
+            return SummationAnswer(listNumbers);
         }
 
         public int ContainsNewLine(string numbers, char delimiter)
@@ -49,16 +45,25 @@ namespace TDD_String_calculator_kata.String_calculator_kata
             var stringNumberList = numbers.Split(delimiter, '\n').ToList();
             stringNumberList.Remove("");
 
-            var listNumbers = stringNumberList.Select(int.Parse).ToList();
-
-            if (!CheckIfContainsNegativeNumbers(listNumbers)) 
-                return stringNumberList.Sum(int.Parse);
+            var listNumbers = stringNumberList.Select(int.Parse);
             
-            var negativeNumbers = GetNegativeNumbers(listNumbers);
-            throw new InvalidOperationException("negatives not allowed: " + string.Join(",",negativeNumbers));
+            return SummationAnswer(listNumbers);
         }
 
-        public IEnumerable<string> ConvertStringToListOfInteger(string numbers, char delimiter, out List<int> listNumbers)
+        private int SummationAnswer(IEnumerable<int> listNumbers)
+        {
+            listNumbers = ReturnListOfNumbersWithoutBigNumbers(listNumbers);
+
+            var enumerableNumbers = listNumbers.ToList();
+            
+            if (!CheckIfContainsNegativeNumbers(enumerableNumbers))
+                return enumerableNumbers.Sum();
+
+            var negativeNumbers = GetNegativeNumbers(enumerableNumbers);
+            throw new InvalidOperationException("negatives not allowed: " + string.Join(",", negativeNumbers));
+        }
+
+        public IEnumerable<string> ConvertStringToListOfInteger(string numbers, char delimiter, out IEnumerable<int> listNumbers)
         {
             var stringNumberList = numbers.Split(delimiter).ToList();
             stringNumberList.Remove("");
@@ -85,6 +90,12 @@ namespace TDD_String_calculator_kata.String_calculator_kata
         public IEnumerable<int> GetNegativeNumbers(IEnumerable<int> numbers)
         {
             return numbers.Where(i => i < 0);
+        }
+
+        public IEnumerable<int> ReturnListOfNumbersWithoutBigNumbers(IEnumerable<int> numbers)
+        {
+            var list = numbers.Where(x => x < 1000).ToList();
+            return list;
         }
     }
 }

@@ -7,8 +7,9 @@ namespace TDD_String_calculator_kata.String_calculator_kata
         public int Add(string numbers);
         public bool CheckTheFinalCharacter(string numbers, char delimiter);
         public int ContainsNewLine(string numbers, char delimiter);
-        public IEnumerable<string> ConvertStringToListOfInteger(string numbers, char delimiter, out List<int> listNumbers);
+        public IEnumerable<string> ConvertStringToListOfInteger(string numbers, char delimiter, out IEnumerable<int> listNumbers);
         public bool CheckIfContainsNegativeNumbers(IEnumerable<int> numbers);
         public IEnumerable<int> GetNegativeNumbers(IEnumerable<int> numbers);
+        public IEnumerable<int> ReturnListOfNumbersWithoutBigNumbers(IEnumerable<int> numbers);
     }
 }
