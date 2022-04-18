@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Xunit.Sdk;
 
 namespace TDD_String_calculator_kata.String_calculator_kata
 {
@@ -78,8 +77,8 @@ namespace TDD_String_calculator_kata.String_calculator_kata
 
             return numbers.EndsWith(delimiter);
         }
-        
-        private static bool CheckIfContainsNegativeNumbers(List<int> numbers)
+
+        private static bool CheckIfContainsNegativeNumbers(IEnumerable<int> numbers)
         {
             return numbers.Any(i => i < 0);
         }
@@ -88,6 +87,5 @@ namespace TDD_String_calculator_kata.String_calculator_kata
         {
             return numbers.Where(i => i < 0);
         }
-        
     }
 }
