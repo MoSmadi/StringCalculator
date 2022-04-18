@@ -63,6 +63,6 @@ public class CalculatorTest
     
         var result = calculator.Add("1,\n");
     
-        result.Should().Be(6);
+        result.Should().Be(int.MinValue);
     }
 }
