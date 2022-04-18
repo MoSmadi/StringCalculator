@@ -14,10 +14,21 @@ namespace TDD_String_calculator_kata.String_calculator_kata
                 return int.Parse(numbers);
             }
 
-            var stringNumberList = numbers.Split(',').ToList();
+            if (numbers.Contains('\n'))
+            {
+                var stringNumberList = numbers.Split(',','\n').ToList();
 
-            //use LINQ instead of normal sum with for loop
-            return stringNumberList.Sum(int.Parse);
+                return stringNumberList.Sum(int.Parse);
+            }
+
+            else
+            {
+                var stringNumberList = numbers.Split(',').ToList();
+                
+                //use LINQ instead of normal sum with for loop
+                return stringNumberList.Sum(int.Parse);
+            }
+            
         }
     }
 }
