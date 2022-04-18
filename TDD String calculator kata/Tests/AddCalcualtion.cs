@@ -45,26 +45,5 @@ namespace TDD_String_calculator_kata.Tests
 
             result.Should().Be(21);
         }
-
-        [Fact]
-        public void AddNewLineBetweenNumbersShould()
-        {
-            var calculator = new Calculator();
-
-            var result = calculator.Add("1\n2,3");
-
-            result.Should().Be(6);
-        }
-
-        [Fact]
-        public void AddNewLineBetweenNumbersWithInvalidSyntaxShould()
-        {
-            var calculator = new Calculator();
-
-            var result = calculator.Add("1,\n");
-
-            result.Should().Be(int.MinValue);
-        }
-
     }
 }
