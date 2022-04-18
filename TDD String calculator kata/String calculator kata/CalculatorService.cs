@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 namespace TDD_String_calculator_kata.String_calculator_kata
@@ -16,6 +17,10 @@ namespace TDD_String_calculator_kata.String_calculator_kata
 
             if (numbers.Contains('\n'))
             {
+                
+                if (CheckTheFinalCharacter(numbers))
+                    return int.MinValue;
+                
                 var stringNumberList = numbers.Split(',','\n').ToList();
 
                 return stringNumberList.Sum(int.Parse);
@@ -29,6 +34,16 @@ namespace TDD_String_calculator_kata.String_calculator_kata
                 return stringNumberList.Sum(int.Parse);
             }
             
+        }
+
+        private static bool CheckTheFinalCharacter(string numbers)
+        {
+            if (!numbers.EndsWith('\n')) 
+                return numbers.EndsWith(',');
+            
+            numbers = numbers.TrimEnd();
+
+            return numbers.EndsWith(',');
         }
     }
 }
