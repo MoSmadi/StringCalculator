@@ -17,7 +17,7 @@ public class CalculatorTest
     }
     
     [Fact]
-    public void AddNContainOneNumberShould()
+    public void AddContainOneNumberShould()
     {
         var calculator = new Calculator();
 
@@ -45,4 +45,14 @@ public class CalculatorTest
 
         result.Should().Be(21);
     }
+    
+    [Fact]
+        public void AddNewLineBetweenNumbersShould()
+        {
+            var calculator = new Calculator();
+    
+            var result = calculator.Add("1\n2,3");
+    
+            result.Should().Be(6);
+        }
 }
